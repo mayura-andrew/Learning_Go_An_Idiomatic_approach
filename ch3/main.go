@@ -91,11 +91,9 @@ func main() {
 	fmt.Println(reflect.TypeOf(xArray))
 	fmt.Printf("type of %T\n", xSlice)
 
-
-
 	//  converting slice to array
 	fmt.Println("-----------------")
-	ySlice := []int{1,2, 3, 4}
+	ySlice := []int{1, 2, 3, 4}
 	yArray := [4]int(ySlice)
 	smallArray := [2]int(ySlice)
 	ySlice[0] = 10
@@ -103,16 +101,14 @@ func main() {
 	fmt.Println(yArray)
 	fmt.Println(smallArray)
 
-
-	// Safer approach using copy() 
+	// Safer approach using copy()
 	fmt.Println("-----------------")
 
 	zSlice := []int{1, 2, 3, 4}
 	var safeArray [5]int
 
-	copy(safeArray[:], zSlice)  // copy elements from zSlice to safeArray
+	copy(safeArray[:], zSlice) // copy elements from zSlice to safeArray
 	fmt.Println("safeArray:", safeArray)
-
 
 	// converting slice to array using make()
 	fmt.Println("-----------------")
@@ -125,7 +121,6 @@ func main() {
 	array := [5]int{}
 	copy(array[:], slice) // copy elements from slice to array
 	fmt.Println("array:", array)
-
 
 	//  converting array to slice using make()
 	fmt.Println("-----------------")
@@ -185,12 +180,54 @@ func main() {
 
 	fmt.Println("arrayPointer:", arrayPointer)
 
-
 	slice8[0] = 10
 	arrayPointer[1] = 20
 	fmt.Println("slice8:", slice8)
 	fmt.Println("arrayPointer:", arrayPointer)
 
+	//  Strings
 
+	str := "Hello, 🌍"
+	byteSlice := []byte(str)
+
+	fmt.Println("string:", str)
+	fmt.Println("byte slice:", byteSlice)
+	fmt.Println("byte slice length:", len(byteSlice))
+
+	// iterating over a string using for loop
+
+	// if you loop over a string normally (without range), you get individual bytes, not characters
+
+	for i := 0; i < len(str); i++ {
+		fmt.Printf("byte's in decimal number %d: %x\n", i, str[i])
+		fmt.Printf("byte's in hexadecimal number %d: %d\n", i, str[i])
+		fmt.Printf("byte's in hexadecimal number %d: %c\n", i, str[i])
+	}
+
+	fmt.Println("-----------------")
+
+	// Maps
+
+	totalWins := map[string]int{}
+	totalWins["teamA"] = 10
+	totalWins["teamB"] = 20
+	totalWins["teamC"] = 30
+	totalWins["teamD"] = 40
+
+	fmt.Println(totalWins)
+	totalWins["teamA"]++
+
+	fmt.Println(totalWins)
+
+	text := map[string]int{
+		"hello":  1,
+		"world":  2,
+		"golang": 3,
+	}
+
+	fmt.Println(text)
+
+	v, ok := text["hello"]
+	fmt.Println(v, ok)
 
 }
